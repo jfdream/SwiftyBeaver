@@ -7,7 +7,12 @@
 //  Some rights reserved: http://opensource.org/licenses/MIT
 //
 
+#if os(Linux)
 import Foundation
+import FoundationNetworking
+#else
+import Foundation
+#endif
 
 // platform-dependent import frameworks to get device details
 // valid values for os(): OSX, iOS, watchOS, tvOS, Linux

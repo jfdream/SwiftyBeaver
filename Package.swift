@@ -5,12 +5,6 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftyBeaver",
-    platforms: [
-        .macOS(.v10_12),
-        .iOS(.v11),
-        .tvOS(.v11),
-        .watchOS(.v2)
-    ],
     products: [
         .library(name: "SwiftyBeaver", targets: ["SwiftyBeaver"])
     ],
