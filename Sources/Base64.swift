@@ -1,6 +1,6 @@
 //
 //  Base64.swift
-//  SwiftyBeaver (macOS)
+//  Logger (macOS)
 //
 //  Copyright © 2017 Sebastian Kreutzberger. All rights reserved.
 //

@@ -3,11 +3,11 @@
 //  AES256CBCTests
 //
 //  Created by Sebastian Kreutzberger on 2/9/16.
-//  Copyright © 2016 SwiftyBeaver. All rights reserved.
+//  Copyright © 2016 Logger. All rights reserved.
 //
 
 import XCTest
-@testable import SwiftyBeaver
+@testable import Logger
 
 class AES256CBCTests: XCTestCase {
 

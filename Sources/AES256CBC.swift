@@ -1,9 +1,9 @@
 //
 //  AES256CBC.swift
-//  AES256CBC https://github.com/SwiftyBeaver/AES256CBC
+//  AES256CBC https://github.com/Logger/AES256CBC
 //
 //  Created by Sebastian Kreutzberger on 2/9/16.
-//  Copyright © 2016 SwiftyBeaver. All rights reserved.
+//  Copyright © 2016 Logger. All rights reserved.
 //
 
 import Foundation

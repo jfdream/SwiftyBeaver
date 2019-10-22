@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "SwiftyBeaver"
+  s.name         = "Logger"
   s.version      = "1.8.0"
   s.summary      = "Convenient logging during development & release in Swift 2, 3, 4 & 5."
 
@@ -13,7 +13,7 @@ Easy-to-use, extensible & powerful logging & analytics for Swift 2 to Swift 5.
 Great for development & release due to its support for many logging destinations & platforms.
                    DESC
 
-  s.homepage     = "https://github.com/SwiftyBeaver/SwiftyBeaver"
+  s.homepage     = "https://github.com/Logger/Logger"
   s.screenshots  = "https://cloud.githubusercontent.com/assets/564725/11452558/17fd5f04-95ec-11e5-96d2-427f62ed4f05.jpg", "https://cloud.githubusercontent.com/assets/564725/11452560/33225d16-95ec-11e5-8461-78f50b9e8da7.jpg"
   s.license      = "MIT"
   s.author       = { "Sebastian Kreutzberger" => "s.kreutzberger@googlemail.com" }
@@ -21,6 +21,6 @@ Great for development & release due to its support for many logging destinations
   s.watchos.deployment_target = "2.0"
   s.tvos.deployment_target = "9.0"
   s.osx.deployment_target = "10.10"
-  s.source       = { :git => "https://github.com/SwiftyBeaver/SwiftyBeaver.git", :tag => "1.8.0" }
+  s.source       = { :git => "https://github.com/Logger/Logger.git", :tag => "1.8.0" }
   s.source_files  = "Sources"
 end

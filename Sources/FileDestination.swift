@@ -1,6 +1,6 @@
 //
 //  FileDestination.swift
-//  SwiftyBeaver
+//  Logger
 //
 //  Created by Sebastian Kreutzberger on 05.12.15.
 //  Copyright © 2015 Sebastian Kreutzberger
@@ -49,7 +49,7 @@ public class FileDestination: BaseDestination {
         #endif
 
         if let baseURL = baseURL {
-            logFileURL = baseURL.appendingPathComponent("swiftybeaver.log", isDirectory: false)
+            logFileURL = baseURL.appendingPathComponent("Logger.log", isDirectory: false)
         }
         super.init()
 
@@ -66,7 +66,7 @@ public class FileDestination: BaseDestination {
     }
 
     // append to file. uses full base class functionality
-    override public func send(_ level: SwiftyBeaver.Level, msg: String, thread: String,
+    override public func send(_ level: Logger.Level, msg: String, thread: String,
         file: String, function: String, line: Int, context: Any? = nil) -> String? {
         let formattedString = super.send(level, msg: msg, thread: thread, file: file, function: function, line: line, context: context)
 
@@ -128,7 +128,7 @@ public class FileDestination: BaseDestination {
             }
             return true
         } catch {
-            print("SwiftyBeaver File Destination could not write to file \(url).")
+            print("Logger File Destination could not write to file \(url).")
             return false
         }
     }
@@ -142,7 +142,7 @@ public class FileDestination: BaseDestination {
             fileHandle = nil
             return true
         } catch {
-            print("SwiftyBeaver File Destination could not remove file \(url).")
+            print("Logger File Destination could not remove file \(url).")
             return false
         }
     }

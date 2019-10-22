@@ -4,13 +4,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftyBeaver",
+    name: "Logger",
     products: [
-        .library(name: "SwiftyBeaver", targets: ["SwiftyBeaver"])
+        .library(name: "Logger", targets: ["Logger"])
     ],
     targets: [
-        .target(name: "SwiftyBeaver", path: "Sources"),
-        .testTarget(name: "SwiftyBeaverTests", dependencies: ["SwiftyBeaver"]),
+        .target(name: "Logger", path: "Sources"),
+        .testTarget(name: "LoggerTests", dependencies: ["Logger"]),
     ],
     swiftLanguageVersions: [.v5]
 )

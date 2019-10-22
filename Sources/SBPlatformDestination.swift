@@ -1,6 +1,6 @@
 //
 //  SBPlatformDestination
-//  SwiftyBeaver
+//  Logger
 //
 //  Created by Sebastian Kreutzberger on 22.01.16.
 //  Copyright © 2016 Sebastian Kreutzberger
@@ -63,7 +63,7 @@ public class SBPlatformDestination: BaseDestination {
     public var showNSLog = false // executes toNSLog statements to debug the class
     var points = 0
 
-    public var serverURL = URL(string: "https://api.swiftybeaver.com/api/entries/") // optional
+    public var serverURL = URL(string: "https://api.Logger.com/api/entries/") // optional
     public var entriesFileURL = URL(fileURLWithPath: "") // not optional
     public var sendingFileURL = URL(fileURLWithPath: "")
     public var analyticsFileURL = URL(fileURLWithPath: "")
@@ -83,7 +83,7 @@ public class SBPlatformDestination: BaseDestination {
 
     /// init platform with default internal filenames
     public init(appID: String, appSecret: String, encryptionKey: String,
-                serverURL: URL? = URL(string: "https://api.swiftybeaver.com/api/entries/"),
+                serverURL: URL? = URL(string: "https://api.Logger.com/api/entries/"),
                 entriesFileName: String = "sbplatform_entries.json",
                 sendingfileName: String = "sbplatform_entries_sending.json",
                 analyticsFileName: String = "sbplatform_analytics.json") {
@@ -154,7 +154,7 @@ public class SBPlatformDestination: BaseDestination {
     }
 
     // append to file, each line is a JSON dict
-    override public func send(_ level: SwiftyBeaver.Level, msg: String, thread: String,
+    override public func send(_ level: Logger.Level, msg: String, thread: String,
         file: String, function: String, line: Int, context: Any? = nil) -> String? {
 
         var jsonString: String?
@@ -207,7 +207,7 @@ public class SBPlatformDestination: BaseDestination {
 
     // MARK: Send-to-Server Logic
 
-    /// does a (manual) sending attempt of all unsent log entries to SwiftyBeaver Platform
+    /// does a (manual) sending attempt of all unsent log entries to Logger Platform
     public func sendNow() {
 
         if sendFileExists() {
@@ -268,7 +268,7 @@ public class SBPlatformDestination: BaseDestination {
         }
     }
 
-    /// sends a string to the SwiftyBeaver Platform server, returns ok if status 200 and HTTP status
+    /// sends a string to the Logger Platform server, returns ok if status 200 and HTTP status
     func sendToServerAsync(_ str: String?, complete: @escaping (_ ok: Bool, _ status: Int) -> Void) {
 
         let timeout = 10.0
@@ -353,7 +353,7 @@ public class SBPlatformDestination: BaseDestination {
     }
 
     /// returns sending points based on level
-    func sendingPointsForLevel(_ level: SwiftyBeaver.Level) -> Int {
+    func sendingPointsForLevel(_ level: Logger.Level) -> Int {
 
         switch level {
         case .debug:
@@ -405,7 +405,7 @@ public class SBPlatformDestination: BaseDestination {
             try fileManager.moveItem(at: entriesFileURL, to: sendingFileURL)
             return true
         } catch {
-            toNSLog("SwiftyBeaver Platform Destination could not rename json file.")
+            toNSLog("Logger Platform Destination could not rename json file.")
             return false
         }
     }
@@ -573,7 +573,7 @@ public class SBPlatformDestination: BaseDestination {
                                     options: .mutableContainers) as? [String: Any]
             }
         } catch {
-            toNSLog("SwiftyBeaver Platform Destination could not read file \(url)")
+            toNSLog("Logger Platform Destination could not read file \(url)")
         }
         return nil
     }

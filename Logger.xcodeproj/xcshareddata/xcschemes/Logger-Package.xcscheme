@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SwiftyBeaver::SwiftyBeaver"
-               BuildableName = "SwiftyBeaver.framework"
-               BlueprintName = "SwiftyBeaver"
-               ReferencedContainer = "container:SwiftyBeaver.xcodeproj">
+               BlueprintIdentifier = "Logger::Logger"
+               BuildableName = "Logger.framework"
+               BlueprintName = "Logger"
+               ReferencedContainer = "container:Logger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SwiftyBeaver::SwiftyBeaverTests"
-               BuildableName = "SwiftyBeaverTests.xctest"
-               BlueprintName = "SwiftyBeaverTests"
-               ReferencedContainer = "container:SwiftyBeaver.xcodeproj">
+               BlueprintIdentifier = "Logger::LoggerTests"
+               BuildableName = "LoggerTests.xctest"
+               BlueprintName = "LoggerTests"
+               ReferencedContainer = "container:Logger.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

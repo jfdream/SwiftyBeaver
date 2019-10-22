@@ -5,7 +5,7 @@
 
 import Foundation
 import XCTest
-@testable import SwiftyBeaver
+@testable import Logger
 
 class FilterTests: XCTestCase {
 
@@ -603,7 +603,7 @@ class FilterTests: XCTestCase {
     // Message filtering tests (identity)
     //
     func test_message_getTarget_isMessageFilter() {
-        let filter = Filters.Message.startsWith("Hello there, SwiftyBeaver!")
+        let filter = Filters.Message.startsWith("Hello there, Logger!")
         let isCorrectTargetType: Bool
         switch filter.getTarget() {
         case .Message:
@@ -659,12 +659,12 @@ class FilterTests: XCTestCase {
     }
 
     func test_message_endsWithAndIsNotRequired_isNotRequiredFilter() {
-        let filter = Filters.Message.endsWith("SwiftyBeaver!", required: false)
+        let filter = Filters.Message.endsWith("Logger!", required: false)
         XCTAssertFalse(filter.isRequired())
     }
 
     func test_message_equalsAndIsNotRequired_isNotRequiredFilter() {
-        let filter = Filters.Message.equals("SwiftyBeaver!", required: false)
+        let filter = Filters.Message.equals("Logger!", required: false)
         XCTAssertFalse(filter.isRequired())
     }
 
@@ -687,12 +687,12 @@ class FilterTests: XCTestCase {
     }
 
     func test_message_endsWithAndIsCaseSensitive_isCaseSensitive() {
-        let filter = Filters.Message.endsWith("SwiftyBeaver!", caseSensitive: true)
+        let filter = Filters.Message.endsWith("Logger!", caseSensitive: true)
         XCTAssertTrue(isCaseSensitive(filter.getTarget()))
     }
 
     func test_message_equalsAndIsCaseSensitive_isCaseSensitive() {
-        let filter = Filters.Message.equals("SwiftyBeaver!", caseSensitive: true)
+        let filter = Filters.Message.equals("Logger!", caseSensitive: true)
         XCTAssertTrue(isCaseSensitive(filter.getTarget()))
     }
 
@@ -712,12 +712,12 @@ class FilterTests: XCTestCase {
     }
 
     func test_message_endsWithAndIsNotCaseSensitive_isNotCaseSensitive() {
-        let filter = Filters.Message.endsWith("SwiftyBeaver!", caseSensitive: false)
+        let filter = Filters.Message.endsWith("Logger!", caseSensitive: false)
         XCTAssertFalse(isCaseSensitive(filter.getTarget()))
     }
 
     func test_message_equalsAndIsNotCaseSensitive_isNotCaseSensitive() {
-        let filter = Filters.Message.equals("SwiftyBeaver!", caseSensitive: false)
+        let filter = Filters.Message.equals("Logger!", caseSensitive: false)
         XCTAssertFalse(isCaseSensitive(filter.getTarget()))
     }
 
@@ -726,152 +726,152 @@ class FilterTests: XCTestCase {
     //
     func test_messageStartsWith_hasOneValueAndIsCaseSensitiveAndMatches_answersTrue() {
         let filter = Filters.Message.startsWith("Hello", caseSensitive: true)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageStartsWith_hasOneValueAndIsNotCaseSensitiveAndMatches_answersTrue() {
         let filter = Filters.Message.startsWith("hello", caseSensitive: false)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageStartsWith_hasOneValueAndIsCaseSensitiveAndDoesNotMatch_answersFalse() {
         let filter = Filters.Message.startsWith("hello", caseSensitive: true)
-        XCTAssertFalse(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertFalse(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageStartsWith_hasMultipleValuesAndIsCaseSensitiveAndMatches_answersTrue() {
         let filter = Filters.Message.startsWith("Goodbye", "Hello", caseSensitive: true)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageStartsWith_hasMultipleValuesAndIsNotCaseSensitiveAndMatches_answersTrue() {
         let filter = Filters.Message.startsWith("goodbye", "hello", caseSensitive: false)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageStartsWith_hasMultipleValuesAndIsCaseSensitiveAndDoesNotMatch_answersFalse() {
         let filter = Filters.Message.startsWith("goodbye", "hello", caseSensitive: true)
-        XCTAssertFalse(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertFalse(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageContains_hasOneValueAndIsCaseSensitiveAndMatches_answersTrue() {
         let filter = Filters.Message.contains("there", caseSensitive: true)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageContains_hasOneValueAndIsNotCaseSensitiveAndMatches_answersTrue() {
         let filter = Filters.Message.contains("There", caseSensitive: false)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageContains_hasOneValueAndIsCaseSensitiveAndDoesNotMatch_answersFalse() {
         let filter = Filters.Message.contains("There", caseSensitive: true)
-        XCTAssertFalse(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertFalse(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageContains_hasMultipleValuesAndIsCaseSensitiveAndMatches_answersTrue() {
         let filter = Filters.Message.contains("their", "there", caseSensitive: true)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageContains_hasMultipleValuesAndIsNotCaseSensitiveAndMatches_answersTrue() {
         let filter = Filters.Message.contains("Their", "There", caseSensitive: false)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageContains_hasMultipleValuesAndIsCaseSensitiveAndDoesNotMatch_answersFalse() {
         let filter = Filters.Message.contains("Their", "There", caseSensitive: true)
-        XCTAssertFalse(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertFalse(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageExcludes_hasOneValueAndIsCaseSensitiveAndMatches_answersTrue() {
         let filter = Filters.Message.excludes("there", caseSensitive: true)
-        XCTAssertFalse(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertFalse(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageExcludes_hasOneValueAndIsNotCaseSensitiveAndMatches_answersTrue() {
         let filter = Filters.Message.excludes("There", caseSensitive: false)
-        XCTAssertFalse(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertFalse(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageExcludes_hasOneValueAndIsCaseSensitiveAndDoesNotMatch_answersFalse() {
         let filter = Filters.Message.excludes("There", caseSensitive: true)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageExcludes_hasMultipleValuesAndIsCaseSensitiveAndMatches_answersTrue() {
         let filter = Filters.Message.excludes("their", "there", caseSensitive: true)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageExcludes_hasMultipleValuesAndIsNotCaseSensitiveAndMatches_answersTrue() {
         let filter = Filters.Message.excludes("Their", "There", caseSensitive: false)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageExcludes_hasMultipleValuesAndIsCaseSensitiveAndDoesNotMatch_answersFalse() {
         let filter = Filters.Message.excludes("Their", "There", caseSensitive: true)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageEndsWith_hasOneValueAndIsCaseSensitiveAndMatches_answersTrue() {
-        let filter = Filters.Message.endsWith("SwiftyBeaver!", caseSensitive: true)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        let filter = Filters.Message.endsWith("Logger!", caseSensitive: true)
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageEndsWith_hasOneValueAndIsNotCaseSensitiveAndMatches_answersTrue() {
-        let filter = Filters.Message.endsWith("swiftybeaver!", caseSensitive: false)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        let filter = Filters.Message.endsWith("Logger!", caseSensitive: false)
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageEndsWith_hasOneValueAndIsCaseSensitiveAndDoesNotMatch_answersFalse() {
-        let filter = Filters.Message.endsWith("swiftybeaver!", caseSensitive: true)
-        XCTAssertFalse(filter.apply("Hello there, SwiftyBeaver!"))
+        let filter = Filters.Message.endsWith("Logger!", caseSensitive: true)
+        XCTAssertFalse(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageEndsWith_hasMultipleValuesAndIsCaseSensitiveAndMatches_answersTrue() {
-        let filter = Filters.Message.endsWith("SluggishMink!", "SwiftyBeaver!", caseSensitive: true)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        let filter = Filters.Message.endsWith("SluggishMink!", "Logger!", caseSensitive: true)
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageEndsWith_hasMultipleValuesAndIsNotCaseSensitiveAndMatches_answersTrue() {
-        let filter = Filters.Message.endsWith("sluggishmink!", "swiftybeaver!", caseSensitive: false)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        let filter = Filters.Message.endsWith("sluggishmink!", "Logger!", caseSensitive: false)
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageEndsWith_hasMultipleValuesAndIsCaseSensitiveAndDoesNotMatch_answersFalse() {
-        let filter = Filters.Message.endsWith("sluggishmink!!", "swiftybeaver!", caseSensitive: true)
-        XCTAssertFalse(filter.apply("Hello there, SwiftyBeaver!"))
+        let filter = Filters.Message.endsWith("sluggishmink!!", "Logger!", caseSensitive: true)
+        XCTAssertFalse(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageEquals_hasOneValueAndIsCaseSensitiveAndMatches_answersTrue() {
-        let filter = Filters.Message.equals("Hello there, SwiftyBeaver!", caseSensitive: true)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        let filter = Filters.Message.equals("Hello there, Logger!", caseSensitive: true)
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageEquals_hasOneValueAndIsNotCaseSensitiveAndMatches_answersTrue() {
-        let filter = Filters.Message.equals("hello there, swiftybeaver!", caseSensitive: false)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        let filter = Filters.Message.equals("hello there, Logger!", caseSensitive: false)
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageEquals_hasOneValueAndIsCaseSensitiveAndDoesNotMatch_answersFalse() {
-        let filter = Filters.Message.equals("hello there, swiftybeaver!", caseSensitive: true)
-        XCTAssertFalse(filter.apply("Hello there, SwiftyBeaver!"))
+        let filter = Filters.Message.equals("hello there, Logger!", caseSensitive: true)
+        XCTAssertFalse(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageEquals_hasMultipleValuesAndIsCaseSensitiveAndMatches_answersTrue() {
-        let filter = Filters.Message.equals("Goodbye, SluggishMink!", "Hello there, SwiftyBeaver!", caseSensitive: true)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        let filter = Filters.Message.equals("Goodbye, SluggishMink!", "Hello there, Logger!", caseSensitive: true)
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageEquals_hasMultipleValuesAndIsNotCaseSensitiveAndMatches_answersTrue() {
-        let filter = Filters.Message.equals("goodbye, sluggishmink!", "hello there, swiftybeaver!", caseSensitive: false)
-        XCTAssertTrue(filter.apply("Hello there, SwiftyBeaver!"))
+        let filter = Filters.Message.equals("goodbye, sluggishmink!", "hello there, Logger!", caseSensitive: false)
+        XCTAssertTrue(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageEquals_hasMultipleValuesAndIsCaseSensitiveAndDoesNotMatch_answersFalse() {
-        let filter = Filters.Message.equals("goodbye, sluggishmink!", "hello there, swiftybeaver!", caseSensitive: true)
-        XCTAssertFalse(filter.apply("Hello there, SwiftyBeaver!"))
+        let filter = Filters.Message.equals("goodbye, sluggishmink!", "hello there, Logger!", caseSensitive: true)
+        XCTAssertFalse(filter.apply("Hello there, Logger!"))
     }
 
     func test_messageCustomSimple_answersTrue() {

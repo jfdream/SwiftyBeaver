@@ -1,6 +1,6 @@
 //
-//  SwiftyBeaver.swift
-//  SwiftyBeaver
+//  Logger.swift
+//  Logger
 //
 //  Created by Sebastian Kreutzberger (Twitter @skreutzb) on 28.11.15.
 //  Copyright © 2015 Sebastian Kreutzberger
@@ -9,7 +9,7 @@
 
 import Foundation
 
-open class SwiftyBeaver {
+open class Logger {
 
     /// version string of framework
     public static let version = "1.8.0"  // UPDATE ON RELEASE!
@@ -134,7 +134,7 @@ open class SwiftyBeaver {
     }
 
     /// custom logging to manually adjust values, should just be used by other frameworks
-    public class func custom(level: SwiftyBeaver.Level, message: @autoclosure () -> Any,
+    public class func custom(level: Logger.Level, message: @autoclosure () -> Any,
                              file: String = #file, function: String = #function, line: Int = #line, context: Any? = nil) {
         #if swift(>=5)
         dispatch_send(level: level, message: message(), thread: threadName(),
@@ -146,7 +146,7 @@ open class SwiftyBeaver {
     }
 
     /// internal helper which dispatches send to dedicated queue if minLevel is ok
-    class func dispatch_send(level: SwiftyBeaver.Level, message: @autoclosure () -> Any,
+    class func dispatch_send(level: Logger.Level, message: @autoclosure () -> Any,
         thread: String, file: String, function: String, line: Int, context: Any?) {
         var resolvedMessage: String?
         for dest in destinations {

@@ -1,6 +1,6 @@
 //
 //  FilterValidator.swift
-//  SwiftyBeaver (iOS)
+//  Logger (iOS)
 //
 //  Created by Felix Lisczyk on 07.07.19.
 //  Copyright © 2019 Sebastian Kreutzberger. All rights reserved.
@@ -40,7 +40,7 @@ struct FilterValidator {
     // Wrapper object for input parameters
     struct Input {
         let filters: [FilterType]
-        let level: SwiftyBeaver.Level
+        let level: Logger.Level
         let path: String
         let function: String
         let message: String?
@@ -101,7 +101,7 @@ struct FilterValidator {
         return results
     }
 
-    private static func filterMatchesCondition(_ filter: FilterType, level: SwiftyBeaver.Level,
+    private static func filterMatchesCondition(_ filter: FilterType, level: Logger.Level,
                                                 path: String, function: String, message: String?) -> Bool {
             let passes: Bool
 
@@ -123,7 +123,7 @@ struct FilterValidator {
             return passes
     }
 
-    private static func filterMatchesMinLogLevel(_ filter: FilterType, level: SwiftyBeaver.Level) -> Bool {
+    private static func filterMatchesMinLogLevel(_ filter: FilterType, level: Logger.Level) -> Bool {
         return filter.reachedMinLevel(level)
     }
 }
